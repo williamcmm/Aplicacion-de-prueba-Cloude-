@@ -2,8 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>LecturaVeloz - Entrenamiento de Lectura Rápida con los Evangelios</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Aplicación de entrenamiento de lectura rápida usando los cuatro Evangelios. 8 ejercicios, seguimiento de progreso y más.">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="LecturaVeloz">
+    <meta name="application-name" content="LecturaVeloz">
+    <meta name="msapplication-TileColor" content="#4f46e5">
+    <meta name="msapplication-TileImage" content="img/icon-144.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/icon-152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="img/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="img/icon-512.png">
+
+    <!-- Open Graph / Share -->
+    <meta property="og:title" content="LecturaVeloz - Lectura Rápida con los Evangelios">
+    <meta property="og:description" content="Mejora tu velocidad de lectura con los textos de los 4 Evangelios. 8 ejercicios de entrenamiento.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/icon-512.png">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
@@ -607,6 +636,32 @@
         </main>
     </div>
 
+    <!-- Install Banner -->
+    <div id="install-banner" class="install-banner hidden">
+        <div class="install-banner-content">
+            <div class="install-banner-icon">📖</div>
+            <div class="install-banner-text">
+                <strong>Instalar LecturaVeloz</strong>
+                <span>Accede sin conexión desde tu pantalla de inicio</span>
+            </div>
+            <button class="btn btn-primary btn-sm" id="install-btn">Instalar</button>
+            <button class="btn-icon" id="install-dismiss">✕</button>
+        </div>
+    </div>
+
+    <!-- iOS Install Instructions -->
+    <div id="ios-install-modal" class="ios-modal hidden">
+        <div class="ios-modal-content">
+            <h3>Instalar en iPhone/iPad</h3>
+            <ol>
+                <li>Toca el botón <strong>Compartir</strong> (cuadro con flecha)</li>
+                <li>Desplázate y toca <strong>"Agregar a pantalla de inicio"</strong></li>
+                <li>Toca <strong>"Agregar"</strong></li>
+            </ol>
+            <button class="btn btn-primary" id="ios-install-close">Entendido</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="data/gospels-mateo.js"></script>
     <script src="data/gospels-marcos.js"></script>
@@ -616,5 +671,68 @@
     <script src="js/storage.js"></script>
     <script src="js/exercises.js"></script>
     <script src="js/app.js"></script>
+
+    <!-- Service Worker & PWA Install -->
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
+                    .catch(err => console.log('[PWA] Error SW:', err));
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installBanner = document.getElementById('install-banner');
+        const installBtn = document.getElementById('install-btn');
+        const installDismiss = document.getElementById('install-dismiss');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBanner.classList.remove('hidden');
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log('[PWA] Install:', outcome);
+                    deferredPrompt = null;
+                    installBanner.classList.add('hidden');
+                }
+            });
+        }
+
+        if (installDismiss) {
+            installDismiss.addEventListener('click', () => {
+                installBanner.classList.add('hidden');
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            installBanner.classList.add('hidden');
+            console.log('[PWA] App instalada');
+        });
+
+        // iOS detection
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+        if (isIOS && !isStandalone) {
+            const iosModal = document.getElementById('ios-install-modal');
+            const dismissed = localStorage.getItem('lv_ios_dismissed');
+            if (!dismissed) {
+                setTimeout(() => iosModal.classList.remove('hidden'), 3000);
+            }
+            document.getElementById('ios-install-close').addEventListener('click', () => {
+                iosModal.classList.add('hidden');
+                localStorage.setItem('lv_ios_dismissed', 'true');
+            });
+        }
+    </script>
 </body>
 </html>
