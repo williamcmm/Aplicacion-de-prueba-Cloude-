@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>LecturaVeloz - Lectura Rápida con los Evangelios</title>
+    <meta name="description" content="Entrena tu velocidad de lectura con 16 técnicas probadas y los Evangelios">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="img/icon-192.png">
+    <link rel="apple-touch-icon" href="img/icon-192.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ========== PANTALLA PRINCIPAL ========== -->
+<div id="screen-home" class="screen active">
+    <header class="home-header">
+        <h1>LecturaVeloz</h1>
+        <div class="home-actions">
+            <button class="btn-icon" id="btn-theme" title="Tema">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button class="btn-icon" id="btn-settings" title="Config">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="exercises-grid">
+        <div class="exercise-tile" data-ex="schultz">
+            <div class="tile-icon">🔢</div>
+            <div class="tile-name">Tabla de Schultz</div>
+            <div class="tile-skill">Visión periférica</div>
+        </div>
+        <div class="exercise-tile" data-ex="flash">
+            <div class="tile-icon">⚡</div>
+            <div class="tile-name">Taquistoscopio</div>
+            <div class="tile-skill">Reconocimiento rápido</div>
+        </div>
+        <div class="exercise-tile" data-ex="flash-choice">
+            <div class="tile-icon">🎯</div>
+            <div class="tile-name">Flash + Opciones</div>
+            <div class="tile-skill">Identificación veloz</div>
+        </div>
+        <div class="exercise-tile" data-ex="word-pyramid">
+            <div class="tile-icon">🔺</div>
+            <div class="tile-name">Pirámide de Palabras</div>
+            <div class="tile-skill">Expansión visual</div>
+        </div>
+        <div class="exercise-tile" data-ex="number-pyramid">
+            <div class="tile-icon">🔻</div>
+            <div class="tile-name">Pirámide de Números</div>
+            <div class="tile-skill">Campo visual</div>
+        </div>
+        <div class="exercise-tile" data-ex="columns">
+            <div class="tile-icon">📰</div>
+            <div class="tile-name">Lectura en Columnas</div>
+            <div class="tile-skill">Fijación única</div>
+        </div>
+        <div class="exercise-tile" data-ex="fixation">
+            <div class="tile-icon">👁️</div>
+            <div class="tile-name">Reducción de Fijaciones</div>
+            <div class="tile-skill">Menos fijaciones</div>
+        </div>
+        <div class="exercise-tile" data-ex="sprints">
+            <div class="tile-icon">🏃</div>
+            <div class="tile-name">Sprints de Velocidad</div>
+            <div class="tile-skill">Romper barreras</div>
+        </div>
+        <div class="exercise-tile" data-ex="peripheral">
+            <div class="tile-icon">👀</div>
+            <div class="tile-name">Visión Periférica</div>
+            <div class="tile-skill">Palabras a los lados</div>
+        </div>
+        <div class="exercise-tile" data-ex="disappearing">
+            <div class="tile-icon">💨</div>
+            <div class="tile-name">Texto Evanescente</div>
+            <div class="tile-skill">Anti-regresión</div>
+        </div>
+        <div class="exercise-tile" data-ex="chunking">
+            <div class="tile-icon">📦</div>
+            <div class="tile-name">Chunking Progresivo</div>
+            <div class="tile-skill">Grupos de palabras</div>
+        </div>
+        <div class="exercise-tile" data-ex="metronome">
+            <div class="tile-icon">🎵</div>
+            <div class="tile-name">Metrónomo</div>
+            <div class="tile-skill">Ritmo constante</div>
+        </div>
+        <div class="exercise-tile" data-ex="letter-grid">
+            <div class="tile-icon">🔤</div>
+            <div class="tile-name">Rejilla de Letras</div>
+            <div class="tile-skill">Búsqueda visual</div>
+        </div>
+        <div class="exercise-tile" data-ex="eye-warmup">
+            <div class="tile-icon">🏋️</div>
+            <div class="tile-name">Calentamiento Ocular</div>
+            <div class="tile-skill">Flexibilidad ocular</div>
+        </div>
+        <div class="exercise-tile" data-ex="comprehension">
+            <div class="tile-icon">🧠</div>
+            <div class="tile-name">Flash + Comprensión</div>
+            <div class="tile-skill">Velocidad con retención</div>
+        </div>
+        <div class="exercise-tile" data-ex="subvocal">
+            <div class="tile-icon">🤫</div>
+            <div class="tile-name">Anti-Subvocalización</div>
+            <div class="tile-skill">Lectura silenciosa</div>
+        </div>
+    </div>
+
+    <div class="home-bottom">
+        <div class="progress-bar-home">
+            <div class="progress-bar-home-fill" id="daily-progress-fill"></div>
+            <span class="progress-bar-home-text" id="daily-progress-text">0 / 10 min hoy</span>
+        </div>
+        <div class="home-stats">
+            <div class="home-stat"><span class="home-stat-value" id="stat-avg-wpm">0</span><span class="home-stat-label">PPM</span></div>
+            <div class="home-stat"><span class="home-stat-value" id="stat-streak">0</span><span class="home-stat-label">Racha</span></div>
+            <div class="home-stat"><span class="home-stat-value" id="stat-sessions">0</span><span class="home-stat-label">Sesiones</span></div>
+            <div class="home-stat"><span class="home-stat-value" id="stat-level">--</span><span class="home-stat-label">Nivel</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PANTALLA INSTRUCCIONES ========== -->
+<div id="screen-instructions" class="screen">
+    <header class="screen-header">
+        <button class="btn-back" id="btn-back-instructions"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+        <h2 id="instr-title"></h2>
+    </header>
+    <div class="instructions-body">
+        <div class="instr-icon" id="instr-icon"></div>
+        <div class="instr-text" id="instr-text"></div>
+        <div class="instr-config" id="instr-config"></div>
+    </div>
+    <div class="instructions-footer">
+        <button class="btn btn-primary btn-lg btn-start" id="btn-start-exercise">Comenzar</button>
+    </div>
+</div>
+
+<!-- ========== PANTALLA EJERCICIO ========== -->
+<div id="screen-exercise" class="screen">
+    <div class="exercise-bar">
+        <button class="btn-icon" id="btn-stop-ex" title="Detener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></button>
+        <button class="btn-icon" id="btn-pause-ex" title="Pausar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+        <div class="ex-progress-bar"><div class="ex-progress-fill" id="ex-progress-fill"></div></div>
+        <span class="ex-timer" id="ex-timer">0:00</span>
+    </div>
+    <div class="exercise-area" id="exercise-area"></div>
+</div>
+
+<!-- ========== PANTALLA RESULTADOS ========== -->
+<div id="screen-results" class="screen">
+    <div class="results-container">
+        <div class="results-icon">✅</div>
+        <h2>¡Ejercicio Completado!</h2>
+        <div class="results-grid" id="results-grid"></div>
+        <div class="results-msg" id="results-msg"></div>
+        <div class="results-buttons">
+            <button class="btn btn-primary" id="btn-retry">Repetir</button>
+            <button class="btn btn-outline" id="btn-back-home">Inicio</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PANTALLA CONFIGURACIÓN ========== -->
+<div id="screen-settings" class="screen">
+    <header class="screen-header">
+        <button class="btn-back" id="btn-back-settings"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+        <h2>Configuración</h2>
+    </header>
+    <div class="settings-body">
+        <div class="setting-group">
+            <h3>Apariencia</h3>
+            <div class="setting-row"><label>Tema</label><select id="set-theme"><option value="light">Claro</option><option value="dark">Oscuro</option><option value="sepia">Sepia</option></select></div>
+            <div class="setting-row"><label>Fuente</label><select id="set-font"><option value="Inter">Inter</option><option value="Merriweather">Merriweather</option></select></div>
+            <div class="setting-row"><label>Tamaño: <span id="set-fs-val">20</span>px</label><input type="range" id="set-fontsize" min="14" max="36" value="20"></div>
+        </div>
+        <div class="setting-group">
+            <h3>Entrenamiento</h3>
+            <div class="setting-row"><label>Meta diaria (min)</label><input type="number" id="set-daily-goal" min="1" max="120" value="10"></div>
+            <div class="setting-row"><label>Evangelio</label><select id="set-gospel"><option value="mateo">San Mateo</option><option value="marcos">San Marcos</option><option value="lucas">San Lucas</option><option value="juan">San Juan</option></select></div>
+        </div>
+        <div class="setting-group">
+            <h3>Mi Progreso</h3>
+            <div class="progress-summary" id="progress-summary"></div>
+            <button class="btn btn-danger-outline" id="btn-reset-progress">Reiniciar progreso</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="data/gospels-mateo.js"></script>
+<script src="data/gospels-marcos.js"></script>
+<script src="data/gospels-lucas.js"></script>
+<script src="data/gospels-juan.js"></script>
+<script src="data/comprehension-questions.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/app.js"></script>
+<script>
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
